@@ -86,8 +86,14 @@ namespace AddressBookBetter
             else
             {
                 AddressBookController address = new AddressBookController();
-                address.AddItem(_editData.Split(';'), _addMode, _row);
-                
+                if (!_addMode)
+                {
+                    address.AddItem(_editData.Split(';'), _addMode, _row);
+                }
+                else {
+                    string[] addData = {txtNama.Text,txtAlamat.Text,txtKota.Text, txtNoHp.Text,dtpTglLahir.Value.ToShortDateString(),txtEmail.Text };
+                    address.AddItem(addData, _addMode, _row);
+                }
                 this.Close();
 
             }
